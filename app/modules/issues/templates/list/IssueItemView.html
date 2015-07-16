@@ -1,0 +1,12 @@
+<h4 class="list-group-item-heading">
+    <span class="issues-issue-number">#<%=number %></span>  <%= title %>
+</h4>
+
+<div  class="list-group-item-text">
+    <div class="pull-left"><a href="<%=user.html_url %>" target="_blank"><%=user.login %></a> </div>
+    <div class="pull-right"><%= moment(created_at).format('LL') %> </div>
+    <div class="clearfix"></div>
+</div>
+
+
+

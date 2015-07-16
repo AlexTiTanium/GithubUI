@@ -1,0 +1,14 @@
+.error {
+  color: #a94442;
+  font-size: 12px;
+  display: none;
+}
+.feedback-error {
+  display: none;
+}
+.has-error .error {
+  display: block;
+}
+.has-error .feedback-error {
+  display: block;
+}

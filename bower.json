@@ -1,0 +1,34 @@
+{
+  "name": "GitHub UI",
+  "version": "0.0.0",
+  "authors": [
+    "Alex Kucherenko <kucherenko.email@gmail.com>"
+  ],
+  "description": "GitHub UI",
+  "main": "index.html",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+
+  "dependencies": {
+
+    "requirejs": "~2.1.17",
+    "lodash": "~3.6.0",
+    "backbone": "~1.1.2",
+    "jquery": "~2.1.3",
+    "marionette": "~2.4.1",
+    "lodash-template-loader": "~1.0.0",
+    "bootstrap": "~3.3.4",
+    "typeahead.js": "~0.10.5",
+    "moment": "~2.10.2",
+    "almond": "~0.3.1"
+  }
+}
