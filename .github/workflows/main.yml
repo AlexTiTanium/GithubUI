@@ -18,10 +18,10 @@ jobs:
     - name: multiple command
       uses: appleboy/ssh-action@v1.0.0
       with:
-        host: $HOST
+        host: ${{ env.HOST }}
         key: ${{ secrets.DEPLOYMENT_USER_KEY }}
         script: |
-          mkdir -p ~/$PROJECT.$HOST/public_html/
+          mkdir -p ~/${{ env.PROJECT }}.${{ env.HOST }}/public_html/
     - uses: actions/checkout@v3
     - name: copy build files via ssh
       uses: appleboy/scp-action@v0.1.4
