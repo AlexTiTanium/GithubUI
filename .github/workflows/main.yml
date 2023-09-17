@@ -19,6 +19,7 @@ jobs:
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ env.HOST }}
+        username: ${{ secrets.USERNAME }}
         key: ${{ secrets.DEPLOYMENT_USER_KEY }}
         script: |
           mkdir -p ~/${{ env.PROJECT }}.${{ env.HOST }}/public_html/
@@ -26,7 +27,8 @@ jobs:
     - name: copy build files via ssh
       uses: appleboy/scp-action@v0.1.4
       with:
-        host: $HOST
+        host: ${{ env.HOST }}
+        username: ${{ secrets.USERNAME }}
         key: ${{ secrets.DEPLOYMENT_USER_KEY }}
         source: "/build/**/*.*"
-        target: "~/$PROJECT.$HOST/public_html/"
+        target: "~/${{ env.PROJECT }}.${{ env.HOST }}/public_html/"
