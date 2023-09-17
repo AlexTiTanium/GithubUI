@@ -1,4 +1,7 @@
 name: guthubui.xogames.org
+env:
+  PROJECT: guthubui
+  HOST: xogames.org
 
 on:
   push:
@@ -15,15 +18,15 @@ jobs:
     - name: multiple command
       uses: appleboy/ssh-action@v1.0.0
       with:
-        host: ${{ secrets.HOST }}
+        host: $HOST
         key: ${{ secrets.DEPLOYMENT_USER_KEY }}
         script: |
-          mkdir -p ~/${{ secrets.PROJECT }}.${{ secrets.HOST }}/public_html/
+          mkdir -p ~/$PROJECT.$HOST/public_html/
     - uses: actions/checkout@v3
     - name: copy build files via ssh
       uses: appleboy/scp-action@v0.1.4
       with:
-        host: ${{ secrets.HOST }}
+        host: $HOST
         key: ${{ secrets.DEPLOYMENT_USER_KEY }}
         source: "/build/**/*.*"
-        target: "~/${{ secrets.PROJECT }}.${{ secrets.HOST }}/public_html/"
+        target: "~/$PROJECT.$HOST/public_html/"
