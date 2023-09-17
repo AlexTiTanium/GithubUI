@@ -32,4 +32,4 @@ jobs:
         timeout: 120s 
         key: ${{ secrets.DEPLOYMENT_USER_KEY }}
         source: "build/*"
-        target: "~/${{ env.PROJECT }}.${{ env.HOST }}/public_html/"
+        target: "~/${{ env.PROJECT }}.${{ env.HOST }}/"
