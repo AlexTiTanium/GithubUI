@@ -1,7 +1,7 @@
 name: guthubui.xogames.org
 env:
   PROJECT: guthubui
-  HOST: xogames.org
+  HOST: 139.59.206.144
 
 on:
   push:
