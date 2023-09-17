@@ -29,7 +29,7 @@ jobs:
       with:
         host: ${{ env.HOST }}
         username: ${{ secrets.USERNAME }}
-        timeout: 120s 
+        timeout: 5m
         key: ${{ secrets.DEPLOYMENT_USER_KEY }}
         source: "build/*"
         target: "~/${{ env.PROJECT }}.${{ env.HOST }}/"
