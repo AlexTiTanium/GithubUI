@@ -31,5 +31,5 @@ jobs:
         username: ${{ secrets.USERNAME }}
         timeout: 5m
         key: ${{ secrets.DEPLOYMENT_USER_KEY }}
-        source: "build/*"
+        source: "build/*,githubui.caddy"
         target: "~/${{ env.PROJECT }}.${{ env.HOST }}/"
