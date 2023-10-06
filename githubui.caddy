@@ -1,4 +1,4 @@
 githubui.xogames.org {
-	root * /home/xogames/build
+	root * /home/xogames/githubui.xogames.org/build
 	file_server
 }
