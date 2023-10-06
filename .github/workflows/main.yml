@@ -25,7 +25,7 @@ jobs:
         
     - name: Create target directories if they don't exist
       run: |
-        ssh -i deploy_key.pem ${{ secrets.USERNAME }}@${{ env.HOST }} "mkdir -p ${{ env.PUBLIC_HTML }}"
+        ssh -i deploy_key.pem -o StrictHostKeyChecking=no ${{ secrets.USERNAME }}@${{ env.HOST }} "mkdir -p ${{ env.PUBLIC_HTML }}"
 
     - name: Copy build files via SSH
       run: |
