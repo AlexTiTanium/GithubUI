@@ -1,27 +1,33 @@
-name: guthubui.xogames.org
+name: githubui.xogames.org
 env:
-  PROJECT: guthubui
+  PROJECT: githubui
   HOST: xogames.org
+  SITES_ENABLED: '~/sites-enabled/'
+  PUBLIC_HTML: '~/githubui.xogames.org/'
 
 on:
   push:
     branches:
       - main
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
 jobs:
   deploy:
     name: deploy
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: copy build files via ssh
-      uses: appleboy/scp-action@v0.1.4
-      with:
-        host: ${{ env.HOST }}
-        username: ${{ secrets.USERNAME }}
-        timeout: 5m
-        key: ${{ secrets.DEPLOYMENT_USER_KEY }}
-        source: "build/*,githubui.caddy"
-        target: "~/sites-enabled/"
+
+    - name: Setup SSH key
+      run: |
+        echo "${{ secrets.DEPLOYMENT_USER_KEY }}" > deploy_key.pem
+        chmod 600 deploy_key.pem
+        
+    - name: Create target directories if they don't exist
+      run: |
+        ssh -i deploy_key.pem ${{ secrets.USERNAME }}@${{ env.HOST }} "mkdir -p ${{ env.PUBLIC_HTML }}"
+
+    - name: Copy build files via SSH
+      run: |
+        scp -i deploy_key.pem -r build/* ${{ secrets.USERNAME }}@${{ env.HOST }}:${{ env.PUBLIC_HTML }}
+        scp -i deploy_key.pem githubui.caddy ${{ secrets.USERNAME }}@${{ env.HOST }}:${{ env.SITES_ENABLED }}
