@@ -1,4 +1,6 @@
 githubui.xogames.org {
-	root * /home/xogames/githubui.xogames.org/build
+	root * /home/xogames/githubui.xogames.org
+	encode gzip
+	try_files {path} /index.html
 	file_server
 }
