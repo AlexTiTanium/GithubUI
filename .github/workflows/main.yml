@@ -15,14 +15,6 @@ jobs:
     name: deploy
     runs-on: ubuntu-latest
     steps:
-    - name: multiple command
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ env.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.DEPLOYMENT_USER_KEY }}
-        script: |
-          mkdir -p ~/${{ env.PROJECT }}.${{ env.HOST }}/
     - uses: actions/checkout@v3
     - name: copy build files via ssh
       uses: appleboy/scp-action@v0.1.4
@@ -32,4 +24,4 @@ jobs:
         timeout: 5m
         key: ${{ secrets.DEPLOYMENT_USER_KEY }}
         source: "build/*,githubui.caddy"
-        target: "~/${{ env.PROJECT }}.${{ env.HOST }}/"
+        target: "~/sites-enabled/"
